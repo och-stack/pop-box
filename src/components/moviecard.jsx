@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function MovieCard({ movie }) {
+function MovieCard({ movie, imdbUrl }) {
     const [imageError, setImageError] = useState(false);
 
     const shortTitle =
@@ -10,7 +10,12 @@ function MovieCard({ movie }) {
 
     return (
         <div className="movie-column">
-            <div className="movie-card">
+            <a
+                href={imdbUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="movie-card"
+            >
                 {!imageError ? (
                     <img
                         src={movie.posterURL}
@@ -24,7 +29,11 @@ function MovieCard({ movie }) {
                 <div className="movie-info">
                     <h5>{shortTitle}</h5>
                 </div>
-            </div>
+
+                <div className="imdb-overlay">
+                    View IMDb
+                </div>
+            </a>
         </div>
     );
 }

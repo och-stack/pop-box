@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import MovieCard from "./components/moviecard";
+//import Pagination from "./components/pagination";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -9,13 +10,13 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  {/*
+  /*
   // pagination
   const [currentPage, setCurrentPage] = useState(1);
   const moviesPerPage = 16;
   const startIndex = (currentPage - 1) * moviesPerPage;
   const endIndex = startIndex + moviesPerPage;
- */}
+  */
 
   // get movies from API
   useEffect(() => {
@@ -35,6 +36,9 @@ function App() {
   const filteredMovies = movies.filter((movie) =>
     movie.title.toLowerCase().includes(searchText.toLowerCase())
   );
+
+  // get movies for current page
+  //const currentMovies = filteredMovies.slice(startIndex, endIndex);
 
   return (
     <div className="container-fluid py-5 px-5">
@@ -68,6 +72,7 @@ function App() {
           className="btn btn-secondary ms-2"
           onClick={() => {
             setSearchText("");
+            //setCurrentPage(1);
           }}
         >
           Clear
@@ -79,43 +84,29 @@ function App() {
       ) : error ? (
         <p className="message">{error}</p>
       ) : filteredMovies.length > 0 ? (
-        <div className="movie-grid">
-          {filteredMovies.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              movie={movie}
-            />
-          ))}
-        </div>
+        <>
+          <div className="movie-grid">
+            {filteredMovies.map((movie) => (
+              <MovieCard
+                key={movie.id}
+                movie={movie}
+                imdbUrl={`https://www.imdb.com/title/${movie.imdbId}/`}
+              />
+            ))}
+          </div>
+
+          {/*
+          <Pagination
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+              endIndex={endIndex}
+              moviesLength={filteredMovies.length}
+          />
+          */}
+        </>
       ) : (
         <p className="message">No movies found.</p>
       )}
-
-      {/* pagination */}
-      {/*
-
-      <div className="text-center mt-4">
-        <button
-          className="btn btn-secondary me-2"
-          onClick={() => setCurrentPage(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          Previous
-        </button>
-
-        <span className="text-white">
-          Page {currentPage}
-        </span>
-
-        <button
-          className="btn btn-warning ms-2"
-          onClick={() => setCurrentPage(currentPage + 1)}
-          disabled={endIndex >= filteredMovies.length}
-        >
-          Next
-        </button>
-      </div>
-    */}
     </div>
   );
 }
