@@ -1,20 +1,27 @@
-<<<<<<< HEAD
-# React + Vite
+## PopBox
+A simple movie search app where users can browse movies, search by title, and view movie details on IMDb.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![PopBox Screenshot](./public/popbox.png)
+Image 1: This is the PopBox movie search application.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Display movies from an API
+- Search movies by title
+- Clear search
+- Pagination
+- Fallback when a movie poster fails to load
+- View movies on IMDb
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- Vite
+- JavaScript
+- Bootstrap
+- CSS
+- REST API
 
-## Expanding the ESLint configuration
+## API
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# pop-box
->>>>>>> c43952440e97ddde56cfa111589a66fc230fe668
+Movie data is provided by SampleAPIs.
