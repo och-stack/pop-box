@@ -79,6 +79,7 @@ function App() {
         </button>
       </div>
 
+      // ternary condition
       {loading ? (
         <p className="message">Loading movies...</p>
       ) : error ? (
