@@ -1,5 +1,5 @@
 
-function Pagination({
+function Page({
     currentPage,
     setCurrentPage,
     endIndex,
@@ -31,4 +31,4 @@ function Pagination({
     );
 }
 
-export default Pagination;
+export default Page;
