@@ -5,7 +5,7 @@ function Pagination({
     endIndex,
     moviesLength,
 }) {
-    // pagination buttons
+    // page buttons
     return (
         <div className="text-center mt-4">
             <button

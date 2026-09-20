@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import MovieCard from "./components/moviecard";
-//import Pagination from "./components/pagination";
+import Page from "./components/page";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -10,15 +10,15 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  /*
-  // pagination
+
+  // page
   const [currentPage, setCurrentPage] = useState(1);
   const moviesPerPage = 16;
   const startIndex = (currentPage - 1) * moviesPerPage;
   const endIndex = startIndex + moviesPerPage;
-  */
 
-  // get movies from API
+
+  {/* get movies from API*/ }
   useEffect(() => {
     fetch("https://api.sampleapis.com/movies/classic")
       .then((response) => response.json())
@@ -38,7 +38,7 @@ function App() {
   );
 
   // get movies for current page
-  //const currentMovies = filteredMovies.slice(startIndex, endIndex);
+  const currentMovies = filteredMovies.slice(startIndex, endIndex);
 
   return (
     <div className="container-fluid py-5 px-5">
@@ -72,14 +72,14 @@ function App() {
           className="btn btn-secondary ms-2"
           onClick={() => {
             setSearchText("");
-            //setCurrentPage(1);
+            setCurrentPage(1);
           }}
         >
           Clear
         </button>
       </div>
 
-      // ternary condition
+      {/* ternary condition*/}
       {loading ? (
         <p className="message">Loading movies...</p>
       ) : error ? (
@@ -87,7 +87,7 @@ function App() {
       ) : filteredMovies.length > 0 ? (
         <>
           <div className="movie-grid">
-            {filteredMovies.map((movie) => (
+            {currentMovies.map((movie) => (
               <MovieCard
                 key={movie.id}
                 movie={movie}
@@ -96,14 +96,14 @@ function App() {
             ))}
           </div>
 
-          {/*
-          <Pagination
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-              endIndex={endIndex}
-              moviesLength={filteredMovies.length}
+
+          <Page
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            endIndex={endIndex}
+            moviesLength={filteredMovies.length}
           />
-          */}
+
         </>
       ) : (
         <p className="message">No movies found.</p>
