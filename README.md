@@ -16,7 +16,6 @@ Image 1: This is the PopBox movie search application.
 ## Tech Stack
 
 - React
-- Vite
 - JavaScript
 - Bootstrap
 - CSS
