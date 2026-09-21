@@ -19,7 +19,6 @@ Image 1: This is the PopBox movie search application.
 - JavaScript
 - Bootstrap
 - CSS
-- REST API
 
 ## API
 
